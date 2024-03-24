@@ -1,0 +1,3 @@
+[submodule "Sources/Clibgit2/libgit2"]
+	path = Sources/Clibgit2/libgit2
+	url = https://github.com/Formkunft/libgit2/
