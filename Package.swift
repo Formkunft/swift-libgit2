@@ -10,8 +10,8 @@ let package = Package(
         .target(
             name: "Clibgit2",
             exclude: [
-                "libgit2/deps/http-parser/CMakeLists.txt",
-                "libgit2/deps/http-parser/COPYING",
+                "libgit2/deps/llhttp/CMakeLists.txt",
+                "libgit2/deps/llhttp/LICENSE-MIT",
                 "libgit2/deps/pcre/CMakeLists.txt",
                 "libgit2/deps/pcre/COPYING",
                 "libgit2/deps/pcre/LICENCE",
@@ -21,6 +21,7 @@ let package = Package(
                 "libgit2/deps/zlib/CMakeLists.txt",
                 "libgit2/deps/zlib/LICENSE",
                 "libgit2/src/libgit2/CMakeLists.txt",
+                "libgit2/src/libgit2/config.cmake.in",
                 "libgit2/src/libgit2/experimental.h.in",
                 "libgit2/src/libgit2/git2.rc",
                 "libgit2/src/util/CMakeLists.txt",
@@ -36,7 +37,7 @@ let package = Package(
                 "libgit2/src/util/win32",
             ],
             sources: [
-                "libgit2/deps/http-parser",
+                "libgit2/deps/llhttp",
                 "libgit2/deps/pcre",
                 "libgit2/deps/xdiff",
                 "libgit2/deps/zlib",
@@ -54,13 +55,15 @@ let package = Package(
                 
                 .headerSearchPath("libgit2/src/libgit2"),
                 .headerSearchPath("libgit2/src/util"),
-                .headerSearchPath("libgit2/deps/http-parser"),
+                .headerSearchPath("libgit2/deps/llhttp"),
                 .headerSearchPath("libgit2/deps/pcre"),
                 .headerSearchPath("libgit2/deps/xdiff"),
                 .headerSearchPath("libgit2/deps/zlib"),
                 
                 .define("LIBGIT2_NO_FEATURES_H"),
                 .define("GIT_ARCH_64"),
+                .define("GIT_QSORT_BSD"),
+                .define("GIT_IO_POLL"),
                 .define("GIT_DEPRECATE_HARD"),
                 
                 .define("GIT_THREADS"),
@@ -75,6 +78,7 @@ let package = Package(
                 
                 // HTTP
                 .define("GIT_HTTPS"),
+                .define("GIT_HTTPPARSER_BUILTIN"),
                 .define("GIT_SECURE_TRANSPORT"),
                 
                 // PCRE
