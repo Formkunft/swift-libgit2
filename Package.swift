@@ -52,35 +52,35 @@ let package = Package(
 					// disable warning: 'Implicit conversion loses integer precision'
 					"-Wno-shorten-64-to-32",
 				]),
-                
+				
 				.headerSearchPath("src/libgit2"),
 				.headerSearchPath("src/util"),
 				.headerSearchPath("deps/llhttp"),
 				.headerSearchPath("deps/pcre"),
 				.headerSearchPath("deps/xdiff"),
 				.headerSearchPath("deps/zlib"),
-                
+				
 				.define("LIBGIT2_NO_FEATURES_H"),
 				.define("GIT_ARCH_64"),
 				.define("GIT_QSORT_BSD"),
 				.define("GIT_IO_POLL"),
 				.define("GIT_DEPRECATE_HARD"),
-                
+				
 				.define("GIT_THREADS"),
 				.define("GIT_QSORT_BSD"),
 				.define("GIT_IO_POLL"),
-                
+				
 				// SSH
 				.define("GIT_SSH"),
 				.define("GIT_SSH_EXEC"),
 				.define("GIT_SHA1_COMMON_CRYPTO"),
 				.define("GIT_SHA256_COMMON_CRYPTO"),
-                
+				
 				// HTTP
 				.define("GIT_HTTPS"),
 				.define("GIT_HTTPPARSER_BUILTIN"),
 				.define("GIT_SECURE_TRANSPORT"),
-                
+				
 				// PCRE
 				.define("GIT_REGEX_BUILTIN"),
 				.define("SUPPORT_PCRE8"),
@@ -94,7 +94,7 @@ let package = Package(
 				.define("BSR_ANYCRLF", to: "0"),
 				.define("MAX_NAME_SIZE", to: "32"),
 				.define("MAX_NAME_COUNT", to: "10000"),
-                
+				
 				// iconv encoding conversion support
 				.define("GIT_USE_ICONV"),
 			],

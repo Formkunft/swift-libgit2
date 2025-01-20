@@ -1,4 +1,4 @@
-# Clibgit2 – Swift Package for libgit2
+# Clibgit2 – Swift Package for libgit2
 
 This is a Swift package for linking to the [libgit2](https://libgit2.org) library.
 macOS is currently the only supported platform given the build configuration in the package manifest.
