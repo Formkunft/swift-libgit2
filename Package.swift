@@ -96,7 +96,8 @@ let package = Package(
 				.define("MAX_NAME_COUNT", to: "10000"),
 				
 				// iconv encoding conversion support
-				.define("GIT_USE_ICONV"),
+				.define("GIT_I18N"),
+				.define("GIT_I18N_ICONV"),
 			],
 			linkerSettings: [
 				.linkedLibrary("iconv"),
