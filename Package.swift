@@ -78,8 +78,10 @@ let package = Package(
 				
 				// HTTP
 				.define("GIT_HTTPS"),
+                .define("GIT_HTTPS_SECURETRANSPORT"),
 				.define("GIT_HTTPPARSER_BUILTIN"),
 				.define("GIT_SECURE_TRANSPORT"),
+                .define("USE_HTTPS", to: "SecureTransport"),
 				
 				// PCRE
 				.define("GIT_REGEX_BUILTIN"),
