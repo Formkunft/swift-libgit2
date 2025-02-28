@@ -6,6 +6,8 @@ The version numbers of this package follow the version numbers of libgit2.
 
 ## Using Swift libgit2 in your project
 
+Add `swift-libgit2` as a dependency to your package:
+
 ```swift
 let package = Package(
     // ...
@@ -20,4 +22,12 @@ let package = Package(
             ]),
     ]
 )
+```
+
+Then, import `Clibgit2` in your code:
+
+```
+import Clibgit2
+
+// ...
 ```
