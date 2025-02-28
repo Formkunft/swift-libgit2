@@ -26,7 +26,7 @@ let package = Package(
 
 Then, import `Clibgit2` in your code:
 
-```
+```swift
 import Clibgit2
 
 // ...
