@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-	name: "Clibgit2",
+	name: "swift-libgit2",
 	products: [
 		.library(name: "Clibgit2", targets: ["Clibgit2"]),
 	],
