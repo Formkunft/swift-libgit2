@@ -14,7 +14,7 @@ Add `swift-libgit2` as a dependency to your package:
 let package = Package(
     // ...
     dependencies: [
-        .package(url: "https://github.com/Formkunft/swift-libgit2", .upToNextMinor(from: "1.9.0")),
+        .package(url: "https://github.com/Formkunft/swift-libgit2.git", .upToNextMinor(from: "1.9.0")),
     ],
     targets: [
         .target(
