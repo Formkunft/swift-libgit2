@@ -4,6 +4,8 @@ Swift libgit2 is a package that provides access to the libgit2 C API without an
 
 The version numbers of this package follow the version numbers of libgit2.
 
+- [Swift Package Index](https://swiftpackageindex.com/Formkunft/swift-libgit2)
+
 ## Using Swift libgit2 in your project
 
 Add `swift-libgit2` as a dependency to your package:
