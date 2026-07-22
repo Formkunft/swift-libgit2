@@ -12,11 +12,9 @@ let package = Package(
 			exclude: [
 				"deps/llhttp/CMakeLists.txt",
 				"deps/llhttp/LICENSE-MIT",
-				"deps/pcre/CMakeLists.txt",
-				"deps/pcre/COPYING",
-				"deps/pcre/LICENCE",
-				"deps/pcre/cmake",
-				"deps/pcre/config.h.in",
+				"deps/pcre2/CMakeLists.txt",
+				"deps/pcre2/LICENCE.md",
+				"deps/pcre2/config.h.in",
 				"deps/xdiff/CMakeLists.txt",
 				"deps/zlib/CMakeLists.txt",
 				"deps/zlib/LICENSE",
@@ -38,7 +36,7 @@ let package = Package(
 			],
 			sources: [
 				"deps/llhttp",
-				"deps/pcre",
+				"deps/pcre2",
 				"deps/xdiff",
 				"deps/zlib",
 				"src/libgit2",
@@ -47,8 +45,10 @@ let package = Package(
 			publicHeadersPath: "include",
 			cSettings: [
 				.unsafeFlags([
-					// fix 'struct entry' causing build conflict
+					// libgit2 is not compatible with modules
 					"-fno-modules",
+					// SwiftPM still passes a module cache path when modules are disabled
+					"-Wno-unused-command-line-argument",
 					// disable warning: 'Implicit conversion loses integer precision'
 					"-Wno-shorten-64-to-32",
 				]),
@@ -56,7 +56,7 @@ let package = Package(
 				.headerSearchPath("src/libgit2"),
 				.headerSearchPath("src/util"),
 				.headerSearchPath("deps/llhttp"),
-				.headerSearchPath("deps/pcre"),
+				.headerSearchPath("deps/pcre2"),
 				.headerSearchPath("deps/xdiff"),
 				.headerSearchPath("deps/zlib"),
 				
@@ -85,16 +85,20 @@ let package = Package(
 				
 				// PCRE
 				.define("GIT_REGEX_BUILTIN"),
-				.define("SUPPORT_PCRE8"),
+				.define("PCRE2_STATIC"),
+				.define("PCRE2_EXPORT", to: ""),
+				.define("PCRE2_EXP_DECL", to: ""),
+				.define("PCRE2_EXP_DEFN", to: ""),
+				.define("PCRE2_CODE_UNIT_WIDTH", to: "8"),
+				.define("SUPPORT_UNICODE"),
 				.define("LINK_SIZE", to: "2"),
+				.define("HEAP_LIMIT", to: "20000000"),
 				.define("PARENS_NEST_LIMIT", to: "250"),
 				.define("MATCH_LIMIT", to: "10000000"),
-				.define("MATCH_LIMIT_RECURSION", to: "10000000"),
-				.define("NO_RECURSE"),
-				.define("NEWLINE", to: "10"), // line feed
-				.define("POSIX_MALLOC_THRESHOLD", to: "10"),
-				.define("BSR_ANYCRLF", to: "0"),
-				.define("MAX_NAME_SIZE", to: "32"),
+				.define("MATCH_LIMIT_DEPTH", to: "MATCH_LIMIT"),
+				.define("MAX_VARLOOKBEHIND", to: "255"),
+				.define("NEWLINE_DEFAULT", to: "2"), // line feed
+				.define("MAX_NAME_SIZE", to: "128"),
 				.define("MAX_NAME_COUNT", to: "10000"),
 				
 				// iconv encoding conversion support
